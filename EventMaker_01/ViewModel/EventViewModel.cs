@@ -7,7 +7,7 @@ using EventMaker_01.Model;
 
 namespace EventMaker_01.ViewModel
 {
-    class EventViewModel
+    public class EventViewModel
     {
         public EventCatalogSingleton EventCatalogSingleton { get; set; }
     }

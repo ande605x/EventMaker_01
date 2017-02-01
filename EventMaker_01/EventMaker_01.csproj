@@ -99,6 +99,9 @@
     <Compile Include="Model\EventCatalogSingleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\EventViewModel.cs" />
+    <Compile Include="View\CreateEventPage.xaml.cs">
+      <DependentUpon>CreateEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
     <Folder Include="Persistency\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\CreateEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

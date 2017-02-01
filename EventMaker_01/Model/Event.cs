@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace EventMaker_01.Model
 {
-    class Event
+    public class Event
     {
         public int Id { get; set; }
         public string Name { get; set; }
