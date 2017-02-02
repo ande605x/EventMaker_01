@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventMaker_01.Converter
 {
-    class DateTimeConverter
+    public class DateTimeConverter
     {
         public static DateTime DateTimeOffsetAndTimeSetToDateTime(DateTimeOffset date, TimeSpan time)
         {
