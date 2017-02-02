@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Gaming.Input.ForceFeedback;
 using Windows.UI.Input;
+using EventMaker_01.Persistency;
+using Newtonsoft.Json;
 
 
 namespace EventMaker_01.Model
@@ -13,8 +15,8 @@ namespace EventMaker_01.Model
     public class EventCatalogSingleton
     {
 
-    
-        //public ObservableCollection<Event> Events { get; set; }
+
+        public PersistencyService ps;
 
         private ObservableCollection<Event> events;
 
@@ -44,8 +46,12 @@ namespace EventMaker_01.Model
         public EventCatalogSingleton()
         {
             Events = new ObservableCollection<Event>();
+
+            ps = new PersistencyService();
+            // Bruges som test dummi test date, for at se om listview er bindet rigtigt.
             //Event minEvent = new Event(01, "Fest", "Mega Stor Fest", "Her", new DateTime(2016, 05, 25));
             //Events.Add(minEvent);
+            LoadEventsAsync();
 
         }
 
@@ -53,7 +59,31 @@ namespace EventMaker_01.Model
         {
             this.Events.Add(e);
 
+            PersistencyService.SaveEventsAsJsonAsync(Events);
 
         }
+
+
+        public async void LoadEventsAsync()
+        {
+            var events = await PersistencyService.LoadEventsFromJsonAsync();
+            if (events != null)
+                foreach (var ev in events)
+                {
+                    Events.Add(ev);
+                }
+            else
+            {
+                Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
+                
+
+                Events.Add(OpretEvent);
+                PersistencyService.SaveEventsAsJsonAsync(Events);
+
+
+            }
+
+        }
+
     }
 }
