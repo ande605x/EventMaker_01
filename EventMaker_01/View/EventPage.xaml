@@ -16,7 +16,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlockTitle" HorizontalAlignment="Left" Margin="70,34,0,0" TextWrapping="Wrap" Text="Events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
-        <ListView x:Name="listViewEvents" HorizontalAlignment="Left" Height="536" Margin="70,141,0,0" VerticalAlignment="Top" Width="520" ItemsSource="{Binding EventCatalogSingleton.Events}" SelectedItem="{Binding SelectedEvent}" >
+        <ListView x:Name="listViewEvents" HorizontalAlignment="Left" Height="536" Margin="70,141,0,0" VerticalAlignment="Top" Width="520" ItemsSource="{Binding EventCatalogSingleton.Events}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Name="border" BorderBrush="Black" BorderThickness="1"
@@ -56,6 +56,8 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="595,141,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="119" Width="305"/>
+        <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Stretch" Icon="Accept" Label="Delete selected event." Margin="595,265,565,0" Height="65" Width="280" FontSize="35" Background="#FFB4B4B4" Command="{Binding DeleteEventCommand}"/>
 
     </Grid>
 </Page>

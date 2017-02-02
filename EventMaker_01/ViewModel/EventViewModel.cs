@@ -12,7 +12,7 @@ using EventMaker_01.Model;
 
 namespace EventMaker_01.ViewModel
 {
-    public class EventViewModel
+    public class EventViewModel : INotifyPropertyChanged
     {
         public EventCatalogSingleton EventCatalogSingleton { get; set; }
 
@@ -69,7 +69,11 @@ namespace EventMaker_01.ViewModel
         public Event SelectedEvent
         {
             get { return selectedEvent; }
-            set { selectedEvent = value; }
+            set
+            {
+                selectedEvent = value;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -101,6 +105,7 @@ namespace EventMaker_01.ViewModel
             time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
 
             EventHandler = new Handler.EventHandler(this);
+            
 
             createEventCommand = new RelayCommand(EventHandler.CreateEvent,null);
             deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,null);
@@ -112,7 +117,7 @@ namespace EventMaker_01.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
+        //[NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
