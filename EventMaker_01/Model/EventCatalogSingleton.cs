@@ -63,6 +63,12 @@ namespace EventMaker_01.Model
 
         }
 
+        public void RemoveEvent(Event e)
+        {
+            Events.Remove(e);
+            PersistencyService.SaveEventsAsJsonAsync(Events);
+        }
+
 
         public async void LoadEventsAsync()
         {

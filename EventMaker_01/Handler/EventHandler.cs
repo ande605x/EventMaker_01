@@ -34,6 +34,10 @@ namespace EventMaker_01.Handler
             EventViewModel.EventCatalogSingleton.AddEvent(newEvent);
         }
 
+        public void DeleteEvent()
+        {
+            EventViewModel.EventCatalogSingleton.RemoveEvent(EventViewModel.SelectedEvent);
+        }
         
     }
 }

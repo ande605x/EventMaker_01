@@ -64,6 +64,15 @@ namespace EventMaker_01.ViewModel
             set { time = value; }
         }
 
+        private Event selectedEvent;
+
+        public Event SelectedEvent
+        {
+            get { return selectedEvent; }
+            set { selectedEvent = value; }
+        }
+
+
         private ICommand createEventCommand;
 
         public ICommand CreateEventCommand
@@ -71,6 +80,15 @@ namespace EventMaker_01.ViewModel
             get { return createEventCommand; }
             set { createEventCommand = value; }
         }
+
+        private ICommand deleteEventCommand;
+
+        public ICommand DeleteEventCommand
+        {
+            get { return deleteEventCommand; }
+            set { deleteEventCommand = value; }
+        }
+
 
         public Handler.EventHandler EventHandler { get; set; }
 
@@ -85,6 +103,7 @@ namespace EventMaker_01.ViewModel
             EventHandler = new Handler.EventHandler(this);
 
             createEventCommand = new RelayCommand(EventHandler.CreateEvent,null);
+            deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,null);
 
             EventCatalogSingleton = EventCatalogSingleton.Instance;
         }
