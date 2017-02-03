@@ -13,33 +13,47 @@
         <viewModel:EventViewModel/>
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlockId" HorizontalAlignment="Left" Margin="52,206,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top" Height="65" Width="180" FontSize="30" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="266,201,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="" FontSize="30"/>
-        <Grid HorizontalAlignment="Left" Height="571" Margin="52,201,0,0" VerticalAlignment="Top" Width="494">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="137*"/>
-                <ColumnDefinition Width="200*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,84,0,0" TextWrapping="Wrap" Text="Navn:" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
-            <TextBox x:Name="textBoxName" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,84,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="Name" FontSize="30"/>
-            <TextBox x:Name="textBoxDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,169,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="Description" FontSize="30"/>
-            <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="0,267,0,0" TextWrapping="Wrap" Text="Place" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
-            <TextBox x:Name="textBoxPlace" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" PlaceholderText="Place" Width="280" Height="65" FontSize="30" Text="{Binding Place, Mode=TwoWay}"/>
-            <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="0,350,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="30" Width="180" Height="65"/>
-        </Grid>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="52,44,0,0" TextWrapping="Wrap" Text="New event." VerticalAlignment="Top" Height="122" Width="494" FontSize="45" />
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="52,375,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
-        <DatePicker HorizontalAlignment="Left" Margin="266,547,0,0" VerticalAlignment="Top" Height="103" Width="566" FontSize="30" DataContext="{Binding Date}"/>
-        <TimePicker HorizontalAlignment="Left" Margin="266,625,0,0" VerticalAlignment="Top" Height="69" Width="566" FontSize="30" DataContext="{Binding Time}"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="52,625,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="180" Height="65" FontSize="30"/>
-        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Label="Create new event." Margin="52,700,0,0" VerticalAlignment="Top" Width="666" FontSize="40" Command="{Binding CreateEventCommand}" Background="#FFB4B4B4">
+    <Viewbox>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="900" Width="1200">
             <Interactivity:Interaction.Behaviors>
-                <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="EventMaker_01.View.EventPage"/>
+                <Core:EventTriggerBehavior EventName="PointerPressed">
+                    <Core:NavigateToPageAction/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-        </AppBarButton>
+            <TextBlock x:Name="textBlockId" HorizontalAlignment="Left" Margin="52,206,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top" Height="65" Width="180" FontSize="30" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="266,201,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="" FontSize="30"/>
+            <Grid HorizontalAlignment="Left" Height="571" Margin="52,201,0,0" VerticalAlignment="Top" Width="494">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="137*"/>
+                    <ColumnDefinition Width="200*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,84,0,0" TextWrapping="Wrap" Text="Navn:" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
+                <TextBox x:Name="textBoxName" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,84,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="Name" FontSize="30"/>
+                <TextBox x:Name="textBoxDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,169,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top" Height="65" Width="280" PlaceholderText="Description" FontSize="30"/>
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="0,267,0,0" TextWrapping="Wrap" Text="Place" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
+                <TextBox x:Name="textBoxPlace" Grid.Column="1" HorizontalAlignment="Left" Margin="13.333,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" PlaceholderText="Place" Width="280" Height="65" FontSize="30" Text="{Binding Place, Mode=TwoWay}"/>
+                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="0,350,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="30" Width="180" Height="65"/>
+            </Grid>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="52,44,0,0" TextWrapping="Wrap" Text="New event." VerticalAlignment="Top" Height="122" Width="494" FontSize="45" />
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="52,375,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="65" Width="180" FontSize="30"/>
+            <DatePicker HorizontalAlignment="Left" Margin="266,547,0,0" VerticalAlignment="Top" Height="103" Width="566" FontSize="30" DataContext="{Binding Date}"/>
+            <TimePicker HorizontalAlignment="Left" Margin="266,625,0,0" VerticalAlignment="Top" Height="69" Width="566" FontSize="30" DataContext="{Binding Time}"/>
+            <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="52,625,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="180" Height="65" FontSize="30"/>
+            <AppBarButton x:Name="appBarButton" Icon="Add" HorizontalAlignment="Left" Label="Create new event." Margin="52,700,0,0" VerticalAlignment="Top" Width="666" FontSize="40" Command="{Binding CreateEventCommand}" Background="#FFB4B4B4" Height="65">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="EventMaker_01.View.EventPage"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </AppBarButton>
+            <AppBarButton x:Name="appBarButton1" Icon="Cancel" Label="Cancel" Margin="52,111,0,0" VerticalAlignment="Top" Height="55" Width="109" HorizontalAlignment="Left" Background="#FFB4B4B4">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="EventMaker_01.View.EventPage"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </AppBarButton>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Page>

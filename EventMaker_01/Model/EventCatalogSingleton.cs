@@ -63,6 +63,7 @@ namespace EventMaker_01.Model
             //Event minEvent = new Event(01, "Fest", "Mega Stor Fest", "Her", new DateTime(2016, 05, 25));
             //Events.Add(minEvent);
             LoadEventsAsync();
+            LoadEventsAsyncFromDeletedEvents();
 
         }
 
@@ -82,12 +83,7 @@ namespace EventMaker_01.Model
 
         }
 
-        //public void MoveEvent(Event e)
-        //{
-        //    SlettetEvents.Add(e);
-        //    PersistencyService.SaveEventsAsJsonAsync(Events);
-        //}
-
+        
         public void RemoveSlettetEvents(Event le)
         {
             Events.Add(le);
@@ -97,11 +93,7 @@ namespace EventMaker_01.Model
             PersistencyServiceDeletet.SaveEventsAsJsonAsync(SlettetEvents);
             
         }
-
-        //public void RestoredEvents(Event re)
-        //{
-        //    Events.Add(re);
-        //}
+        
 
 
         public async void LoadEventsAsync()
@@ -115,11 +107,11 @@ namespace EventMaker_01.Model
             
             else
             {
-                //Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
-                
+                Event OpretEvent = new Event(1, "Event navn her", "Forklaring her", "Sted her", new DateTime(2017, 06, 27, 12, 10, 00));
 
-                //Events.Add(OpretEvent);
-                //PersistencyService.SaveEventsAsJsonAsync(Events);
+
+                Events.Add(OpretEvent);
+                PersistencyService.SaveEventsAsJsonAsync(Events);
 
 
             }
@@ -137,11 +129,11 @@ namespace EventMaker_01.Model
 
             else
             {
-                //Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
+                Event OpretEvent = new Event(1, "Event navn her", "Forklaring her", "Sted her", new DateTime(2017, 06, 27, 12, 10, 00));
 
 
-                //Events.Add(OpretEvent);
-                //PersistencyService.SaveEventsAsJsonAsync(Events);
+                SlettetEvents.Add(OpretEvent);
+                PersistencyServiceDeletet.SaveEventsAsJsonAsync(Events);
 
 
             }

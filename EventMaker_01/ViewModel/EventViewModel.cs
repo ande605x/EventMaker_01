@@ -113,19 +113,17 @@ namespace EventMaker_01.ViewModel
         public bool IsEventEmpty()
         {
             
-            if (EventCatalogSingleton.Instance.Events.Count > 0)
+            if (EventCatalogSingleton.Instance.Events.Count > 0 && EventCatalogSingleton.Instance.Events.Contains(SelectedEvent))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
+            
         }
 
         public bool IsEventsRestoreEmpty()
         {
-            if (EventCatalogSingleton.Instance.SlettetEvents.Count > 0)
+            if (EventCatalogSingleton.Instance.SlettetEvents.Count > 0 && EventCatalogSingleton.Instance.SlettetEvents.Contains(SelectedEvent))
             {
                 return true;
             }
