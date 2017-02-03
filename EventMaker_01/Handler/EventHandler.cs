@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using EventMaker_01.Converter;
 using EventMaker_01.Model;
 using EventMaker_01.ViewModel;
@@ -34,9 +35,11 @@ namespace EventMaker_01.Handler
             EventViewModel.EventCatalogSingleton.AddEvent(newEvent);
         }
 
-        public void DeleteEvent()
+        public async void DeleteEvent()
         {
+            
             EventViewModel.EventCatalogSingleton.RemoveEvent(EventViewModel.SelectedEvent);
+
         }
         
     }

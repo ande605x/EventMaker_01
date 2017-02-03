@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Popups;
 using EventMaker_01.Common;
 using EventMaker_01.Handler;
 using EventMaker_01.Model;
@@ -90,13 +91,29 @@ namespace EventMaker_01.ViewModel
         public ICommand DeleteEventCommand
         {
             get { return deleteEventCommand; }
-            set { deleteEventCommand = value; }
+            set
+            {
+                deleteEventCommand = value;
+            }
         }
 
 
         public Handler.EventHandler EventHandler { get; set; }
 
 
+       
+        public bool IsEventEmpty()
+        {
+            
+            if (EventCatalogSingleton.Instance.Events.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public EventViewModel()
         {
@@ -106,14 +123,13 @@ namespace EventMaker_01.ViewModel
 
             EventHandler = new Handler.EventHandler(this);
             
-
             createEventCommand = new RelayCommand(EventHandler.CreateEvent,null);
-            deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,null);
+            deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,IsEventEmpty);
 
             EventCatalogSingleton = EventCatalogSingleton.Instance;
         }
 
-
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
 
