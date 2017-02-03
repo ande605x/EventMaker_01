@@ -97,6 +97,14 @@ namespace EventMaker_01.ViewModel
             }
         }
 
+        private ICommand restoreEventCommand;
+
+        public ICommand RestoreEventCommand
+        {
+            get { return restoreEventCommand; }
+            set { restoreEventCommand = value; }
+        }
+
 
         public Handler.EventHandler EventHandler { get; set; }
 
@@ -115,6 +123,19 @@ namespace EventMaker_01.ViewModel
             }
         }
 
+        public bool IsEventsRestoreEmpty()
+        {
+            if (EventCatalogSingleton.Instance.SlettetEvents.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+                
+            }
+        }
+
         public EventViewModel()
         {
             DateTime dt = System.DateTime.Now;
@@ -125,6 +146,7 @@ namespace EventMaker_01.ViewModel
             
             createEventCommand = new RelayCommand(EventHandler.CreateEvent,null);
             deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,IsEventEmpty);
+            restoreEventCommand = new RelayCommand(EventHandler.RestoreEvent,IsEventsRestoreEmpty);
 
             EventCatalogSingleton = EventCatalogSingleton.Instance;
         }

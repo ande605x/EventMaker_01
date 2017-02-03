@@ -16,6 +16,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="textBlockTitle" HorizontalAlignment="Left" Margin="70,34,0,0" TextWrapping="Wrap" Text="Events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
+        <TextBlock x:Name="textBlockTitleSlettetEvents" HorizontalAlignment="Left" Margin="921,34,0,0" TextWrapping="Wrap" Text="Slettet events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
+
         <ListView x:Name="listViewEvents" HorizontalAlignment="Left" Height="536" Margin="70,141,0,0" VerticalAlignment="Top" Width="520" ItemsSource="{Binding EventCatalogSingleton.Events}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -49,7 +51,7 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <AppBarButton x:Name="appBarButton" Label="Add new event." Margin="70,718,0,0" Width="520" Height="65" HorizontalAlignment="Left" Background="#FFB4B4B4" FontSize="55">
+        <AppBarButton x:Name="appBarButton" Label="Add new event." Margin="70,718,0,0" Width="450" Height="65" HorizontalAlignment="Left" Background="#FFB4B4B4" FontSize="55">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
                     <Core:NavigateToPageAction TargetPage="EventMaker_01.View.CreateEventPage"/>
@@ -58,6 +60,42 @@
         </AppBarButton>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="595,141,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="119" Width="305"/>
         <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Stretch" Icon="Accept" Label="Delete selected event." Margin="595,265,565,0" Height="65" Width="280" FontSize="35" Background="#FFB4B4B4" Command="{Binding DeleteEventCommand}"/>
+        <AppBarButton x:Name="appBarButtonGendanEvent" HorizontalAlignment="Stretch" Icon="Accept" Label="Restore selected event." Margin="900,718,92,0" Height="65" Width="450" FontSize="35" Background="#FFB4B4B4" Command="{Binding RestoreEventCommand}"/>
+
+
+        <ListView x:Name="listViewSlettetEvents" HorizontalAlignment="Left" Height="536" Margin="900,141,0,0" VerticalAlignment="Top" Width="368" ItemsSource="{Binding EventCatalogSingleton.SlettetEvents}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Name="border" BorderBrush="Black" BorderThickness="1"
+          Padding="5" Margin="5">
+                        <Grid Height="110" Width="320">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Event Id:"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Event Name:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}" />
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Description}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Place:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Place}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Date:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding DateTime}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
 
     </Grid>
 </Page>

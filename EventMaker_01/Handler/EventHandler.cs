@@ -37,9 +37,15 @@ namespace EventMaker_01.Handler
 
         public async void DeleteEvent()
         {
-            
+            //EventViewModel.EventCatalogSingleton.MoveEvent(EventViewModel.SelectedEvent);
             EventViewModel.EventCatalogSingleton.RemoveEvent(EventViewModel.SelectedEvent);
+        }
 
+        public void RestoreEvent()
+        {
+            EventViewModel.EventCatalogSingleton.RemoveSlettetEvents(EventViewModel.SelectedEvent);
+            //EventViewModel.EventCatalogSingleton.AddEvent(EventViewModel.SelectedEvent);
+            
         }
         
     }

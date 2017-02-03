@@ -18,6 +18,7 @@ namespace EventMaker_01.Model
 
 
         public PersistencyService ps;
+        public PersistencyServiceDeletet deletedev;
 
         private ObservableCollection<Event> events;
 
@@ -25,6 +26,14 @@ namespace EventMaker_01.Model
         {
             get { return events; }
             set { events = value; }
+        }
+
+        private ObservableCollection<Event> slettetEvents;
+
+        public ObservableCollection<Event> SlettetEvents
+        {
+            get { return slettetEvents; }
+            set { slettetEvents = value; }
         }
 
 
@@ -47,9 +56,10 @@ namespace EventMaker_01.Model
         public EventCatalogSingleton()
         {
             Events = new ObservableCollection<Event>();
-
+            SlettetEvents = new ObservableCollection<Event>();
             ps = new PersistencyService();
-            // Bruges som test dummi test date, for at se om listview er bindet rigtigt.
+            deletedev = new PersistencyServiceDeletet();
+                // Bruges som test dummi test date, for at se om listview er bindet rigtigt.
             //Event minEvent = new Event(01, "Fest", "Mega Stor Fest", "Her", new DateTime(2016, 05, 25));
             //Events.Add(minEvent);
             LoadEventsAsync();
@@ -59,16 +69,39 @@ namespace EventMaker_01.Model
         public void AddEvent(Event e)
         {
             this.Events.Add(e);
-
             PersistencyService.SaveEventsAsJsonAsync(Events);
-
         }
 
         public void RemoveEvent(Event e)
         {
+            SlettetEvents.Add(e);
             Events.Remove(e);
+
             PersistencyService.SaveEventsAsJsonAsync(Events);
+            PersistencyServiceDeletet.SaveEventsAsJsonAsync(SlettetEvents);
+
         }
+
+        //public void MoveEvent(Event e)
+        //{
+        //    SlettetEvents.Add(e);
+        //    PersistencyService.SaveEventsAsJsonAsync(Events);
+        //}
+
+        public void RemoveSlettetEvents(Event le)
+        {
+            Events.Add(le);
+            SlettetEvents.Remove(le);
+            
+            PersistencyService.SaveEventsAsJsonAsync(Events);
+            PersistencyServiceDeletet.SaveEventsAsJsonAsync(SlettetEvents);
+            
+        }
+
+        //public void RestoredEvents(Event re)
+        //{
+        //    Events.Add(re);
+        //}
 
 
         public async void LoadEventsAsync()
@@ -82,11 +115,33 @@ namespace EventMaker_01.Model
             
             else
             {
-                Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
+                //Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
                 
 
-                Events.Add(OpretEvent);
-                PersistencyService.SaveEventsAsJsonAsync(Events);
+                //Events.Add(OpretEvent);
+                //PersistencyService.SaveEventsAsJsonAsync(Events);
+
+
+            }
+
+        }
+
+        public async void LoadEventsAsyncFromDeletedEvents()
+        {
+            var events = await PersistencyServiceDeletet.LoadEventsFromJsonAsync();
+            if (events != null)
+                foreach (var ev in events)
+                {
+                    SlettetEvents.Add(ev);
+                }
+
+            else
+            {
+                //Event OpretEvent = new Event(1,"Event navn her", "Forklaring her", "Sted her",new DateTime(2017, 06,27,12,10,00));
+
+
+                //Events.Add(OpretEvent);
+                //PersistencyService.SaveEventsAsJsonAsync(Events);
 
 
             }
