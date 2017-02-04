@@ -47,7 +47,7 @@ namespace EventMaker_01.Persistency
             catch (FileNotFoundException ex)
             {
 
-                MessageDialogHelper.Show("File of Events not found! - Loading for the first time? \n File not found!", ex.Message);
+                MessageDialogHelper.Show("Filen for slettet events blev ikke fundet  \n File not found!", ex.Message);
                 return null;
             }
         }

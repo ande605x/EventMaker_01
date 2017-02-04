@@ -93,7 +93,15 @@ namespace EventMaker_01.Model
             PersistencyServiceDeletet.SaveEventsAsJsonAsync(SlettetEvents);
             
         }
-        
+
+        public void DeleteEventForever(Event def)
+        {
+            Events.Remove(def);
+            SlettetEvents.Remove(def);
+
+            PersistencyService.SaveEventsAsJsonAsync(Events);
+            PersistencyServiceDeletet.SaveEventsAsJsonAsync(SlettetEvents);
+        }
 
 
         public async void LoadEventsAsync()
@@ -107,7 +115,7 @@ namespace EventMaker_01.Model
             
             else
             {
-                Event OpretEvent = new Event(1, "Event navn her", "Forklaring her", "Sted her", new DateTime(2017, 06, 27, 12, 10, 00));
+                Event OpretEvent = new Event(1, "Dummie date. Navn her", "Dummie data. Forklaring her", "Dummie data. Sted her", new DateTime(2017, 06, 27, 12, 10, 00));
 
 
                 Events.Add(OpretEvent);
@@ -129,7 +137,7 @@ namespace EventMaker_01.Model
 
             else
             {
-                Event OpretEvent = new Event(1, "Event navn her", "Forklaring her", "Sted her", new DateTime(2017, 06, 27, 12, 10, 00));
+                Event OpretEvent = new Event(2, "Dummie date. Navn her", "Dummie data. Forklaring her, slettet event", "Dummie data. Sted her", new DateTime(2018, 08, 12, 10, 21, 15));
 
 
                 SlettetEvents.Add(OpretEvent);

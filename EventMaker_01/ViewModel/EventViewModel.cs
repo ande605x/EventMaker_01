@@ -105,6 +105,15 @@ namespace EventMaker_01.ViewModel
             set { restoreEventCommand = value; }
         }
 
+        private ICommand deleteEventForeverCommand;
+
+        public ICommand DeleteEventForeverCommand
+        {
+            get { return deleteEventForeverCommand; }
+            set { deleteEventForeverCommand = value; }
+        }
+
+
 
         public Handler.EventHandler EventHandler { get; set; }
 
@@ -145,6 +154,7 @@ namespace EventMaker_01.ViewModel
             createEventCommand = new RelayCommand(EventHandler.CreateEvent,null);
             deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent,IsEventEmpty);
             restoreEventCommand = new RelayCommand(EventHandler.RestoreEvent,IsEventsRestoreEmpty);
+            deleteEventForeverCommand = new RelayCommand(EventHandler.DeleteEventForGood,IsEventsRestoreEmpty);
 
             EventCatalogSingleton = EventCatalogSingleton.Instance;
         }
