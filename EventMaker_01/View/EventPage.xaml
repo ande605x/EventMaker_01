@@ -16,8 +16,10 @@
 
     <Viewbox>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="900">
-            <TextBlock x:Name="textBlockTitle" HorizontalAlignment="Left" Margin="103,34,0,0" TextWrapping="Wrap" Text="Events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
-            <TextBlock x:Name="textBlockTitleSlettetEvents" HorizontalAlignment="Left" Margin="921,34,0,0" TextWrapping="Wrap" Text="Deleted events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45" />
+            <TextBlock x:Name="textBlockTitle" HorizontalAlignment="Left" Margin="89,34,0,0" TextWrapping="Wrap" Text="Events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
+            <TextBlock x:Name="textBlockTitleSelected" HorizontalAlignment="Left" Margin="545,34,0,0" TextWrapping="Wrap" Text="Selected event" VerticalAlignment="Top" Height="58" Width="347" FontSize="45"/>
+
+            <TextBlock x:Name="textBlockTitleSlettetEvents" HorizontalAlignment="Left" Margin="915,34,0,0" TextWrapping="Wrap" Text="Deleted events" VerticalAlignment="Top" Height="58" Width="347" FontSize="45" />
 
             <ListView x:Name="listViewEvents" HorizontalAlignment="Left" Height="536" Margin="70,141,0,0" VerticalAlignment="Top" Width="425" ItemsSource="{Binding EventCatalogSingleton.Events}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" >
                 <ListView.ItemTemplate>
