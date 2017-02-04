@@ -59,7 +59,7 @@ namespace EventMaker_01.Model
             SlettetEvents = new ObservableCollection<Event>();
             ps = new PersistencyService();
             deletedev = new PersistencyServiceDeletet();
-                // Bruges som test dummi test date, for at se om listview er bindet rigtigt.
+            // Kan bruges som test date, for at se om listview er bindet rigtigt.
             //Event minEvent = new Event(01, "Fest", "Mega Stor Fest", "Her", new DateTime(2016, 05, 25));
             //Events.Add(minEvent);
             LoadEventsAsync();
